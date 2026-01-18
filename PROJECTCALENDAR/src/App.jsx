@@ -1,7 +1,9 @@
 import React from 'react'
 import Header from './components/Header/Header'
-import Footer from './components/main/main'
+import Footer from './components/Footer/Footer'
 import Main from "./components/main/main"
+import AddForm from './components/AddFrom/AddForm'
+
 
 export default function App() {
   return (
@@ -9,6 +11,7 @@ export default function App() {
    <Header/>
    <Main/>
    <Footer/>
+  <AddForm></AddForm>
    </>
   )
 }
