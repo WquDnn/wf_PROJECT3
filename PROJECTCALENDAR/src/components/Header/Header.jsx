@@ -5,6 +5,7 @@ import { IoCalendar } from "react-icons/io5";
 import { FaRegCalendar } from "react-icons/fa";
 import { FaCalendarDays } from "react-icons/fa6";
 import { FaCalendarWeek } from "react-icons/fa6";
+import { NavLink } from 'react-router-dom';
 
 function Header(props) {
   return (
@@ -16,10 +17,10 @@ function Header(props) {
             <h3>CALENAR</h3>
         </div>
       <nav>
-      <a href="" className={style.link}>Main</a>
-      <a href="" className={style.link}><IoCalendar />Month</a>
-      <a href="" className={style.link}><FaCalendarDays />Week</a>
-      <a href="" className={style.link}><FaRegCalendar />Day</a>
+      <NavLink to="/" className={style.link}>Main</NavLink>
+      <NavLink to="/" className={style.link}><IoCalendar />Month</NavLink>
+      <NavLink to="/week" className={style.link}><FaCalendarDays />Week</NavLink>
+      <NavLink to="/day" className={style.link}><FaRegCalendar />Day</NavLink>
       </nav>
       </header>
     </div>
