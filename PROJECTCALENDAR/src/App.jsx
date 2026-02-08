@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 import Main from "./components/main/main"
-import AddForm from './components/AddFrom/AddForm'
+import Modal from './components/Modal/Modal'
 import { FaRegCalendarPlus } from "react-icons/fa";
 import StorageProvider from "./store/ContextStore"
 import { BrowserRouter } from "react-router-dom"
@@ -16,7 +16,7 @@ export default function App() {
       <Header />
       <Main />
       <Footer />
-      {modalIsOpen && <AddForm open={setModalIsOpen} />}
+      {modalIsOpen && <Modal open={setModalIsOpen} />}
       <button className='addButton' onClick={() => setModalIsOpen(true)}>
         <FaRegCalendarPlus />
       </button>

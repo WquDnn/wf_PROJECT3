@@ -18,7 +18,6 @@
             background-color: white;
             position: relative;
             padding: 2rem 0.5rem;
-           
             .number {
                 position: absolute;
                 top: 5px;
@@ -34,5 +33,10 @@
             }
         }
     }
-    
+
+    & .events {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+    }
 }
