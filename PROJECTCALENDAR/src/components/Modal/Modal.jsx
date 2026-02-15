@@ -2,18 +2,23 @@ import {useContext, useEffect, useRef, useState} from 'react'
 import style from "./Modal.module.scss"
 import { RiCloseLargeLine } from "react-icons/ri";
 import {ContextStore} from "../../store/ContextStore"
+import { useForm } from "react-hook-form"
 
 
 export default function Modal(props) {
 
     let { addEvent } = useContext(ContextStore)
+    let {register, handleSubmit, formState: {errors}, reset} = useForm()
 
-    const handleSubmit = (e) => {
-        if (!correct) return
-        addEvent({title, date, time, color})
-        props.open(false)
+    
+                const submit = (data) => {
+                    console.log(data)
+                    
+                    addEvent(data)
+                    props.open(false)
+                    reset()
+                }
 
-    }
    
   return (
     <div className={style.wrapper} 
@@ -21,7 +26,7 @@ export default function Modal(props) {
         if(e.target == e.currentTarget) props.open(false)
     }}
     >
-        <div className={style.inner}>
+        <form onSubmit={handleSubmit(submit)} className={style.inner}>
             <button className={style.closeButton} onClick={()=>props.open(false)}>
                 
 <RiCloseLargeLine />
@@ -32,6 +37,16 @@ export default function Modal(props) {
             <section>
                 <label htmlFor="title">Hapdf gjls</label>
                 <input type="text" name='title' id='title'
+                {...register("title", {
+                    required: true,
+                    minLenght: 3,
+                    maxLength: 40,
+                    pattern: {
+                        value: /^[a-zA-Z0-9\s]*$/, 
+                        message: "Only letters or numbers",
+                    },
+                    message: "WRONG TITLE"
+                })}
                
                 />
                 
@@ -40,12 +55,24 @@ export default function Modal(props) {
             <section>
                 <label htmlFor="date">Lfnf gjls</label>
                 <input type="date" name='date' id='date'
+                {...register("date", {
+                    required: {
+                        value: true,
+                        message: "Date is empty"
+                    }
+                })}
                />
             
             </section>
             <section>
                 <label htmlFor="time">Xfc gjls</label>
                 <input type="time" name='time' id='time'
+                {...register("time", {
+                    required: {
+                        value: true,
+                        message: "TIME IS WRONG"
+                    }
+                })}
                 />
                 
             
@@ -53,11 +80,20 @@ export default function Modal(props) {
             <section>
                 <label htmlFor="color">Rjksh gjls</label>
                 <input type="color" name='color' id='color'
+                {...register("color", {value: "#0000"})}
+
               />
             </section>
-            <button>Ljlfnb gjls.s</button>
+            {(errors.title || errors.date || errors.time) && (
+                <span className={style.error}>
+                    {errors.title?.message}
+                    {errors.date?.message}
+                    {errors.time?.message}
+                </span>
+            )}
+            <button type="submit" disabled={errors.title || errors.date || errors.time}>Ljlfnb gjls.s</button>
 
-        </div>
+        </form>
       
     </div>
   )

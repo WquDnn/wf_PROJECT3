@@ -1,0 +1,110 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ffebee 0%, #ffc1e3 100%);
+  padding: 20px;
+  position: relative;
+  overflow: hidden; // Щоб сердечка не створювали прокрутку
+}
+
+// Контейнер для літаючих сердечок
+.heartBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; // Щоб не заважали клікати по кнопках
+  z-index: 0;
+
+  span {
+    position: absolute;
+    bottom: -50px;
+    opacity: 0;
+    animation: floatUp linear infinite;
+  }
+}
+
+.content {
+  position: relative;
+  z-index: 1; // Контент поверх фону
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 20px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(255, 105, 135, 0.1);
+
+  label {
+    margin-bottom: 5px;
+    color: #d81b60;
+    font-weight: bold;
+  }
+
+  input, textarea {
+    border: 1px solid #ffc1e3;
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 15px;
+    outline: none;
+    font-size: 1rem;
+    &:focus { border-color: #ff4081; }
+  }
+  
+  textarea { min-height: 80px; resize: none; }
+}
+
+.valentinka {
+  width: 100%;
+  background: white;
+  padding: 40px 20px;
+  border-radius: 30px;
+  box-shadow: 0 15px 45px rgba(216, 27, 96, 0.2);
+  text-align: center;
+  border: 2px solid #fff;
+  animation: popUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  h1 { color: #c2185b; margin-bottom: 10px; }
+  p { color: #ff9f9f; font-size: 1.2rem; white-space: pre-wrap; }
+}
+  
+  .heartsCount {
+    font-size: 1.5rem;
+    margin-top: 15px;
+    word-break: break-all;
+  }
+
+  .valentinka {
+  // ... (попередні стилі)
+  overflow: hidden; // Щоб картинка не вилазила за закруглені краї
+  padding: 0 0 30px 0; // Прибираємо верхній падінг, щоб картинка була впритул
+
+  .valImage {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; // Обрізає картинку, щоб вона заповнила простір
+    border-bottom: 3px solid #ff4081;
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    padding: 0 20px; // Додаємо відступ для тексту, бо прибрали його у картки
+  }
+
+  p {
+    padding: 0 25px;
+  }
+}
