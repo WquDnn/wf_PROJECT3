@@ -3,18 +3,19 @@ import style from "./Modal.module.scss"
 import { RiCloseLargeLine } from "react-icons/ri";
 import {ContextStore} from "../../store/ContextStore"
 import { useForm } from "react-hook-form"
-
+import { useDispatch } from 'react-redux';
+import{addEvent} from "../../store/EventsReducer"
 
 export default function Modal(props) {
-
-    let { addEvent } = useContext(ContextStore)
+    
+let dispatch = useDispatch()
     let {register, handleSubmit, formState: {errors}, reset} = useForm()
 
     
                 const submit = (data) => {
                     console.log(data)
                     
-                    addEvent(data)
+                    dispatch(addEvent(data))
                     props.open(false)
                     reset()
                 }
