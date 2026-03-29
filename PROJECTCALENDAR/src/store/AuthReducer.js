@@ -24,7 +24,8 @@ const AuthReducer = createSlice({
   },
   extraReducers: (b)=> {
     b.addCase(loginUser.pending, (state)=> {
-      state.loading = truestate.error = null 
+      state.loading = true
+      state.error = null 
     })
     b.addCase(loginUser.rejected, (state, action)=> {
       state.loading = false
@@ -36,7 +37,8 @@ const AuthReducer = createSlice({
       localStorage.setItem("token", action.payload.token)
     })
     b.addCase(registerUser.pending, (state)=> {
-      state.loading = truestate.error = null 
+      state.loading = true
+      state.error = null 
     })
     b.addCase(registerUser.rejected, (state, action)=> {
       state.loading = false
@@ -76,7 +78,7 @@ export default AuthReducer.reducer
 
 export const registerUser = createAsyncThunk("auth/registerUser", async (data, { rejectWithValue, dispatch })=> {
   try {
-      const response = await fetch("http://localhost:3000/login", {
+      const response = await fetch("http://localhost:3000/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
